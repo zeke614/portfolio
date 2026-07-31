@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import { LuGithub, LuLinkedin, LuMail } from "react-icons/lu";
 
 type SocialLink = {
@@ -24,47 +25,80 @@ const SOCIALS: SocialLink[] = [
 
 export default function Footer() {
   const year = new Date().getFullYear();
-  const [hovered, setHovered] = useState(false);
+
+  // 1. Set up state for the live GitHub commit date
+  const [lastCommit, setLastCommit] = useState<string>("fetching_sys_data...");
+
+  // 2. Fetch the data on component mount
+  useEffect(() => {
+    async function fetchLastCommit() {
+      try {
+        const response = await fetch(
+          "https://api.github.com/users/zeke614/events/public",
+        );
+
+        if (!response.ok) throw new Error("Network response was not ok");
+
+        const events = await response.json();
+
+        // Filter for actual code pushes
+        const pushes = events.filter(
+          (event: any) => event.type === "PushEvent",
+        );
+
+        if (pushes.length > 0) {
+          // Grab the timestamp of the most recent push
+          const date = new Date(pushes[0].created_at);
+
+          // Format to match our legacy military string: YYYY-MM-DD HH:MM:SS UTC
+          const formatted =
+            date.toISOString().replace("T", " ").substring(0, 19) + " UTC";
+          setLastCommit(formatted);
+        } else {
+          setLastCommit("no_recent_commits");
+        }
+      } catch (error) {
+        setLastCommit("API_CONNECTION_FAILED");
+      }
+    }
+
+    fetchLastCommit();
+  }, []);
 
   return (
-    <footer className="w-full bg-bg text-fg">
-      <div
-        className="
-          mx-auto max-w-240 flex-col gap-4
-          px-4 sm:px-8 xl:px-0
-        "
-      >
+    <footer className="w-full bg-bg text-fg pb-4 sm:pb-8">
+      <div className="mx-auto max-w-240 flex-col px-4 sm:px-8 xl:px-0">
         <div className="border-t-2 border-fg"></div>
-        <div className="border-t border-fg/30"></div>
+        <div className="border-t border-fg/30 mt-1"></div>
 
-        <div className="flex pt-5 sm:flex-row sm:items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-1.5 w-1.5">
+        <div className="flex pt-6 sm:flex-row sm:items-center justify-between">
+          {/* Interactive Status & Copyright (Pure CSS, No State) */}
+          <div className="group flex items-start sm:items-center gap-3 cursor-default select-none">
+            <span className="relative flex h-1.5 w-1.5 mt-2 sm:mt-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-terminal-green opacity-75"></span>
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-terminal-green"></span>
             </span>
 
-            <p
-              onMouseEnter={() => setHovered(true)}
-              onMouseLeave={() => setHovered(false)}
-              className="font-display text-fg-dim cursor-default select-none"
-            >
-              <span className="text-terminal-green"></span>
-              {hovered ? (
-                <span className="hidden sm:inline"> zeke · frontend dev </span>
-              ) : (
-                <>
-                  <span className="hidden sm:inline">
-                    {" "}
-                    © {year} zeke · compiled with next.js{" "}
-                  </span>
-                  <span className="sm:hidden inline-block">
-                    {" "}
-                    © {year} zeke <br /> compiled with next.js{" "}
-                  </span>
-                </>
-              )}
-              <span className="text-terminal-green"></span>
+            <p className="font-display text-fg-dim transition-colors duration-200 group-hover:text-fg">
+              {/* Default State */}
+              <span className="block group-hover:hidden">
+                <span className="hidden sm:inline">
+                  © {year} zeke · compiled with next.js
+                </span>
+                <span className="sm:hidden inline-block leading-tight">
+                  © {year} zeke <br /> compiled with next.js
+                </span>
+              </span>
+
+              {/* Hover State */}
+              <span className="hidden group-hover:block text-terminal-green">
+                <span className="hidden sm:inline">
+                  zeke · frontend dev · node_accra
+                </span>
+                <span className="sm:hidden inline-block leading-tight">
+                  zeke <br /> frontend dev
+                </span>
+              </span>
             </p>
           </div>
 
@@ -77,29 +111,39 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 aria-label={label}
                 className="
-                  group flex h-8 w-8 items-center justify-center
+                  group/btn flex h-8 w-8 items-center justify-center
                   rounded-none border-2 border-fg bg-panel
-                  shadow-hard transition-all
+                  shadow-hard transition-all duration-200 ease-out
                   hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg hover:rotate-[-4deg]
                   active:translate-x-0 active:translate-y-0 active:shadow-none active:rotate-0
                 "
               >
                 <Icon
                   size={15.5}
-                  className="text-fg transition-colors group-hover:text-terminal-green"
+                  className="text-fg transition-colors group-hover/btn:text-terminal-green"
                 />
               </a>
             ))}
           </div>
         </div>
 
-        <div className="flex justify-between pb-5 pt-2">
-          <p className="font-display text-sm text-fg-dim/60 tracking-wide">
-            entry_no: 0042 · last_commit: {year}-06-01 12:00:00 UTC
+        <div className="flex flex-col sm:flex-row justify-between pt-8 gap-2 sm:gap-0">
+          <p className="font-display text-[11px] sm:text-xs text-fg-dim/60 tracking-[0.2em]">
+            entry_no: 0042 · last_commit:{" "}
+            <span
+              className={
+                lastCommit === "fetching_sys_data..."
+                  ? "animate-pulse text-amber"
+                  : ""
+              }
+            >
+              {lastCommit}
+            </span>
           </p>
-          <p className="font-display text-sm text-fg-dim/60 tracking-wide">
-            v1.0.0
-          </p>
+          <div className="flex gap-4 font-display text-[11px] sm:text-xs text-fg-dim/60 tracking-[0.2em]">
+            <span>v.1.0.0</span>
+            <span className="text-amber/60">{"// [EOF]"}</span>
+          </div>
         </div>
       </div>
     </footer>
