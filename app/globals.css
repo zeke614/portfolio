@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Terminal — dark, default */
+:root,
+[data-theme="terminal"] {
+  --background: #0b0d0e;
+  --panel: #121517;
+  --foreground: #f3f1ea;
+  --foreground-dim: #9a9c93;
+  --line: #2a2d2c;
+
+  --terminal-green: #00d66b;
+  --loss-red: #ff4d4d;
+  --amber: #ffb800;
+}
+
+/* Ledger — light, paper/ink */
+[data-theme="ledger"] {
+  --background: #f4f1e8;
+  --panel: #ffffff;
+  --foreground: #1a1d1a;
+  --foreground-dim: #6b6a5f;
+  --line: #d8d3c2;
+
+  /* darker/desaturated so they stay legible on a light bg */
+  --terminal-green: #0a7d3f;
+  --loss-red: #b8342a;
+  --amber: #966009;
 }
 
 @theme inline {
+  --color-bg: var(--background);
+  --color-panel: var(--panel);
+  --color-fg: var(--foreground);
+  --color-fg-dim: var(--foreground-dim);
+  --color-line: var(--line);
+  --color-terminal-green: var(--terminal-green);
+  --color-loss-red: var(--loss-red);
+  --color-amber: var(--amber);
+
+  /* kept for any existing utilities still referencing background/foreground */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* flat, zero-blur offset shadow — the brutalist "sticker" look.
+     tied to --foreground so it auto-flips ink color per theme */
+  --shadow-hard: 6px 6px 0 0 var(--foreground);
+  --shadow-hard-lg: 9px 9px 0 0 var(--foreground);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-display), Arial, Helvetica, sans-serif;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
