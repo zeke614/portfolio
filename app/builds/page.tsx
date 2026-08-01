@@ -5,7 +5,7 @@ import exchangoPreview from "@/app/imgs/exchango.webp";
 // import exchangoPreview from "@/app/imgs/ssexchango.webp";
 import assayPreview from "@/app/imgs/assay.webp";
 
-import { LuArrowUpRight, LuCheck } from "react-icons/lu";
+import { LuArrowUpRight } from "react-icons/lu";
 import { PiEyesFill } from "react-icons/pi";
 
 const container: Variants = {
@@ -24,7 +24,7 @@ const item: Variants = {
   },
 };
 
-export default function Works() {
+export default function Builds() {
   return (
     <section className="relative w-full bg-bg text-fg min-h-screen pb-22 pt-18 md:py-30">
       <motion.div
@@ -33,10 +33,9 @@ export default function Works() {
         animate="show"
         className="mx-auto max-w-4xl px-4 sm:px-8 xl:px-0 flex flex-col gap-16"
       >
-        {/* Page Header */}
         <motion.div variants={item} className="flex flex-col gap-3">
-          <div className="font-display text-sm text-terminal-green">
-            {">"} ls -la ./production_builds
+          <div className="font-display text-sm text-amber tracking-wide">
+            {">"} ls -lah ./production_builds
           </div>
           <h1 className="font-display text-[30px] font-bold leading-[1.1] text-fg">
             sys.deployments
@@ -46,7 +45,7 @@ export default function Works() {
           </p>
         </motion.div>
 
-        {/* PROJECT 01: ASSAY                         */}
+        {/* PROJECT 01: ASSAY */}
         <motion.div
           variants={item}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full pr-[6.5px] sm:px-0"
@@ -61,7 +60,7 @@ export default function Works() {
             }}
           >
             <div className="relative z-10 pl-2 flex flex-col h-full">
-              <div className="font-display text-[11px] tracking-wider text-fg-dim mb-4">
+              <div className="font-display text-[13px] tracking-wider text-fg-dim mb-4">
                 financial_logic // thesis
               </div>
 
@@ -92,7 +91,7 @@ export default function Works() {
                 </p>
               </div>
 
-              {/* THE POLAROID PREVIEW */}
+              {/* THE PREVIEW */}
               <div className="mt-auto border-2 border-fg bg-panel p-2 shadow-hard -rotate-1 transition-all duration-300 hover:rotate-0 hover:-translate-y-1 hover:shadow-hard-lg cursor-default">
                 <div className="relative aspect-square w-full border-2 border-fg overflow-hidden bg-line/10">
                   <img
@@ -101,7 +100,7 @@ export default function Works() {
                     className="object-cover w-full h-full opacity-90 transition-all duration-500 hover:opacity-100 hover:scale-[1.02]"
                   />
                 </div>
-                <div className="flex justify-between items-center px-1 pt-2 pb-1 font-display text-[10px] text-fg-dim tracking-wider">
+                <div className="flex justify-between items-center px-1 pt-2 pb-1 font-display text-[11px] text-fg-dim tracking-wider">
                   <span>fig 1 assay_preview</span>
                   <span>v1.0.0</span>
                 </div>
@@ -111,7 +110,7 @@ export default function Works() {
 
           {/* PANE B: THE DEVELOPER HANDS (Terminal Style Card) */}
           <div className="relative w-full border-2 border-fg bg-bg shadow-hard flex flex-col">
-            <div className="flex items-center justify-between border-b-2 border-fg bg-panel px-4 py-2.5 font-display text-[11px] tracking-wider text-fg-dim">
+            <div className="flex items-center justify-between border-b-2 border-fg bg-panel px-4 py-2.5 font-display text-[13px] tracking-wider text-fg-dim">
               <span>engine_room.ts</span>
               <span className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-terminal-green animate-pulse shadow-[0_0_5px_var(--color-terminal-green)]"></span>
@@ -125,7 +124,7 @@ export default function Works() {
                   (tech) => (
                     <span
                       key={tech}
-                      className="border-2 border-fg bg-panel px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-wider text-fg shadow-hard transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg cursor-default"
+                      className="border-2 border-fg bg-panel px-2.5 py-1 font-display text-[11px] font-bold uppercase tracking-wider text-fg shadow-hard transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg cursor-default"
                     >
                       {tech}
                     </span>
@@ -133,7 +132,7 @@ export default function Works() {
                 )}
               </div>
 
-              <div className="flex flex-col gap-1.5 border-l-2 border-terminal-green pl-4 font-display text-[11px] sm:text-xs text-fg-dim">
+              <div className="flex flex-col gap-1.5 border-l-2 border-terminal-green pl-4 font-display text-[13px] text-fg-dim">
                 <div className="text-amber mb-1">
                   {"// src/engine.ts -> calculateAllMethods()"}
                 </div>
@@ -183,17 +182,17 @@ export default function Works() {
 
               <div className="mt-2 flex flex-col border-2 border-fg bg-panel p-4 shadow-hard transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg cursor-default">
                 <div className="flex justify-between items-center border-b-2 border-fg pb-3 mb-3">
-                  <span className="font-display text-[10px] font-bold tracking-widest text-fg-dim">
+                  <span className="font-display text-xs font-bold tracking-widest text-fg-dim">
                     verdictCard.tsx
                   </span>
-                  <span className="flex items-center gap-1 border-2 border-fg bg-terminal-green px-2 py-0.5 font-display text-[11px] font-bold text-bg">
-                    <span className="text-base">✓</span> viable
+                  <span className="flex items-center gap-1 border-2 border-fg bg-terminal-green px-2 py-0.5 font-display text-xs font-bold text-bg">
+                    <span className="text-sm">✓</span> viable
                   </span>
                 </div>
                 <h3 className="font-display font-bold text-lg mb-1">
                   Profitability Index
                 </h3>
-                <p className="text-[13px] leading-relaxed text-fg-dim">
+                <p className="text-sm leading-relaxed text-fg-dim">
                   For every ¥1.00 invested, this project returns approximately
                   ¥1.15 in present value.
                 </p>
@@ -204,7 +203,7 @@ export default function Works() {
                   href="https://assayit.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 text-center border-2 border-fg bg-terminal-green px-5 py-3 font-display text-[13px] font-bold text-bg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg active:translate-x-0 active:translate-y-0 active:shadow-none"
+                  className="flex-1 text-center border-2 border-fg bg-terminal-green px-5 py-3 font-display text-sm font-bold text-bg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg active:translate-x-0 active:translate-y-0 active:shadow-none"
                 >
                   experience{" "}
                   <LuArrowUpRight className="inline-block ml-1 size-4.5" />
@@ -213,7 +212,7 @@ export default function Works() {
                   href="https://github.com/zeke614"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 text-center border-2 border-fg bg-panel px-5 py-3 font-display text-[13px] font-bold text-fg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none"
+                  className="flex-1 text-center border-2 border-fg bg-panel px-5 py-3 font-display text-sm font-bold text-fg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none"
                 >
                   source <PiEyesFill className="inline-block ml-1 size-4.5" />
                 </a>
@@ -237,7 +236,7 @@ export default function Works() {
             }}
           >
             <div className="relative z-10 pl-2 flex flex-col h-full">
-              <div className="font-display text-[11px] tracking-wider text-fg-dim mb-4">
+              <div className="font-display text-[13px] tracking-wider text-fg-dim mb-4">
                 market_logic // exchange
               </div>
 
@@ -274,7 +273,7 @@ export default function Works() {
                     className="object-cover w-full h-full opacity-90 transition-all duration-500 hover:opacity-100 hover:scale-[1.02]"
                   />
                 </div>
-                <div className="flex justify-between items-center px-1 pt-2 pb-1 font-display text-[10px] text-fg-dim tracking-wider">
+                <div className="flex justify-between items-center px-1 pt-2 pb-1 font-display text-[11px] text-fg-dim tracking-wider">
                   <span>fig 2 exchango_preview</span>
                   <span>v1.2.4</span>
                 </div>
@@ -284,7 +283,7 @@ export default function Works() {
 
           {/* PANE B: THE DEVELOPER HANDS (Terminal Style Card) */}
           <div className="relative w-full border-2 border-fg bg-bg shadow-hard flex flex-col">
-            <div className="flex items-center justify-between border-b-2 border-fg bg-panel px-4 py-2.5 font-display text-[11px] tracking-wider text-fg-dim">
+            <div className="flex items-center justify-between border-b-2 border-fg bg-panel px-4 py-2.5 font-display text-[13px] tracking-wider text-fg-dim">
               <span>api_client.ts</span>
               <span className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-terminal-green animate-pulse shadow-[0_0_5px_var(--color-terminal-green)]"></span>
@@ -303,7 +302,7 @@ export default function Works() {
                 ].map((tech) => (
                   <span
                     key={tech}
-                    className="border-2 border-fg bg-panel px-2.5 py-1 font-display text-[10px] font-bold uppercase tracking-wider text-fg shadow-hard transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg cursor-default"
+                    className="border-2 border-fg bg-panel px-2.5 py-1 font-display text-[11px] font-bold uppercase tracking-wider text-fg shadow-hard transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg cursor-default"
                   >
                     {tech}
                   </span>
@@ -311,7 +310,7 @@ export default function Works() {
               </div>
 
               {/* API & State Management Trace */}
-              <div className="flex flex-col gap-1 border-l-2 border-amber pl-4 font-display text-[11px] sm:text-xs text-fg-dim">
+              <div className="flex flex-col gap-1 border-l-2 border-amber pl-4 font-display text-[13px] text-fg-dim">
                 <div className="text-amber mb-1">
                   {"// src/hooks/useExchangeRates.ts"}
                 </div>
@@ -339,17 +338,17 @@ export default function Works() {
               {/* The Data Visualization Mockup */}
               <div className="mt-2 flex flex-col border-2 border-fg bg-panel p-4 shadow-hard transition-all duration-200 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg cursor-default">
                 <div className="flex justify-between items-center border-b-2 border-fg pb-3 mb-3">
-                  <span className="font-display text-[10px] font-bold tracking-widest text-fg-dim">
+                  <span className="font-display text-xs font-bold tracking-widest text-fg-dim">
                     historyChart.tsx
                   </span>
-                  <span className="flex items-center gap-1.5 border-2 border-fg bg-amber px-2 py-0.5 font-display text-[10px] font-bold text-bg">
+                  <span className="flex items-center gap-1.5 border-2 border-fg bg-amber px-2 py-0.5 font-display text-xs font-bold text-bg">
                     <span>~</span> rendering
                   </span>
                 </div>
                 <h3 className="font-display font-bold text-lg mb-1">
                   Data Visualization
                 </h3>
-                <p className="text-[13px] leading-relaxed text-fg-dim">
+                <p className="text-sm leading-relaxed text-fg-dim">
                   Interactive historical rate mapping built with Recharts,
                   optimized for responsive cross-device viewing.
                 </p>
@@ -360,7 +359,7 @@ export default function Works() {
                   href="https://exchangoio.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 text-center border-2 border-fg bg-terminal-green px-5 py-3 font-display text-[13px] font-bold text-bg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg active:translate-x-0 active:translate-y-0 active:shadow-none"
+                  className="flex-1 text-center border-2 border-fg bg-terminal-green px-5 py-3 font-display text-sm font-bold text-bg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg active:translate-x-0 active:translate-y-0 active:shadow-none"
                 >
                   experience
                   <LuArrowUpRight className="inline-block ml-1 size-4.5" />
@@ -369,7 +368,7 @@ export default function Works() {
                   href="https://github.com/zeke614/exchango"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 text-center border-2 border-fg bg-panel px-5 py-3 font-display text-[13px] font-bold text-fg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none"
+                  className="flex-1 text-center border-2 border-fg bg-panel px-5 py-3 font-display text-sm font-bold text-fg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none"
                 >
                   source <PiEyesFill className="inline-block ml-1 size-4.5" />
                 </a>

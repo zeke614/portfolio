@@ -26,13 +26,13 @@ export default function Header() {
 
   const navLinks = [
     { label: "about", href: "/about" },
-    { label: "works", href: "/works" },
-    { label: "contact", href: "/contact" },
+    { label: "builds", href: "/builds" },
+    { label: "pipeline", href: "/pipeline" },
   ];
 
   return (
     <header className="w-full bg-bg text-fg">
-      <div className="mx-auto max-w-240 px-4 sm:px-8 xl:px-0">
+      <div className="mx-auto max-w-225 px-4 sm:px-8 xl:px-0">
         <div className="flex items-center justify-between py-5">
           <Link
             href="/"

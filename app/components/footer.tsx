@@ -26,7 +26,6 @@ const SOCIALS: SocialLink[] = [
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  // 1. Set up state for the live GitHub commit date
   const [lastCommit, setLastCommit] = useState<string>("fetching_sys_data...");
 
   // 2. Fetch the data on component mount
@@ -47,10 +46,10 @@ export default function Footer() {
         );
 
         if (pushes.length > 0) {
-          // Grab the timestamp of the most recent push
+          // timestamp of the most recent push
           const date = new Date(pushes[0].created_at);
 
-          // Format to match our legacy military string: YYYY-MM-DD HH:MM:SS UTC
+          // legacy string format: YYYY-MM-DD HH:MM:SS UTC
           const formatted =
             date.toISOString().replace("T", " ").substring(0, 19) + " UTC";
           setLastCommit(formatted);
@@ -67,7 +66,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-bg text-fg pb-4 sm:pb-8">
-      <div className="mx-auto max-w-240 flex-col px-4 sm:px-8 xl:px-0">
+      <div className="mx-auto max-w-225 flex-col px-4 sm:px-8 xl:px-0">
         <div className="border-t-2 border-fg"></div>
         <div className="border-t border-fg/30 mt-1"></div>
 
@@ -79,14 +78,14 @@ export default function Footer() {
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-terminal-green"></span>
             </span>
 
-            <p className="font-display text-fg-dim transition-colors duration-200 group-hover:text-fg">
+            <p className="font-display text-[15px] text-fg-dim transition-colors duration-200 group-hover:text-fg">
               {/* Default State */}
               <span className="block group-hover:hidden">
                 <span className="hidden sm:inline">
-                  © {year} zeke · compiled with next.js
+                  © {year} · zeke · compiled with Next.js
                 </span>
                 <span className="sm:hidden inline-block leading-tight">
-                  © {year} zeke <br /> compiled with next.js
+                  © {year} · zeke <br /> compiled with Next.js
                 </span>
               </span>
 
@@ -127,9 +126,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row justify-between pt-8 gap-2 sm:gap-0">
-          <p className="font-display text-[11px] sm:text-xs text-fg-dim/60 tracking-[0.2em]">
-            entry_no: 0042 · last_commit:{" "}
+        <div className="flex justify-between pt-6 pb-2 sm:pb-0">
+          <p className="font-display text-[11px] sm:text-xs text-fg-dim/60 tracking-wide">
+            last_commit:{" "}
             <span
               className={
                 lastCommit === "fetching_sys_data..."
@@ -140,8 +139,8 @@ export default function Footer() {
               {lastCommit}
             </span>
           </p>
-          <div className="flex gap-4 font-display text-[11px] sm:text-xs text-fg-dim/60 tracking-[0.2em]">
-            <span>v.1.0.0</span>
+          <div className="flex gap-2 font-display text-[11px] sm:text-xs text-fg-dim/60 tracking-[0.2em]">
+            <span>v1.0.0</span>
             <span className="text-amber/60">{"// [EOF]"}</span>
           </div>
         </div>
