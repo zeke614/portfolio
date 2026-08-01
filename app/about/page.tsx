@@ -48,6 +48,112 @@ function useElapsed(dateStr: string) {
   return { days, hours, minutes, seconds };
 }
 
+// data
+type CommitStatus = "active" | "done" | "pending";
+
+type Commit = {
+  hash: string;
+  ref?: string;
+  date: string;
+  title: string;
+  detail: string;
+  status: CommitStatus;
+};
+
+const COMMITS: Commit[] = [
+  {
+    hash: "a1b2c3d",
+    ref: "(planned)",
+    date: "expected Sep 2026",
+    title: "sys_build_complete",
+    detail:
+      "BSc. Business Administration (Management), KNUST. Expected First Class Honours.",
+    status: "pending",
+  },
+  {
+    hash: "9f4e21a",
+    ref: "(HEAD -> main)",
+    date: "Jan 2025 - Present",
+    title: "dev_runtime",
+    detail:
+      "Frontend Developer Intern (remote) at Nixzoe Inc, Canada. Shipping production-grade React/Next.js applications, integrating third-party REST APIs, and debugging UI across deployment workflows.",
+    status: "active",
+  },
+  {
+    hash: "7c2b9f1",
+    ref: "(tag: v1.0-scholar)",
+    date: "2024 - 2026",
+    title: "scholarship_granted",
+    detail: "Ghana National Petroleum Corporation Scholarship, KNUST.",
+    status: "done",
+  },
+  {
+    hash: "f8e7d6c",
+    date: "Sep 2023 - Nov 2023",
+    title: "finance_runtime",
+    detail:
+      "Intern at SMEC (Accra). Managed financial records, tax clearances, reconciled receipts, and ensured audit readiness.",
+    status: "done",
+  },
+  {
+    hash: "3d8a04e",
+    ref: "(tag: v0.1-topgrad)",
+    date: "2022",
+    title: "overall_best_student",
+    detail: "Best General Arts Student, St. Augustine's College, Cape Coast.",
+    status: "done",
+  },
+  {
+    hash: "init_commit",
+    ref: "(root-commit)",
+    date: "2019 - 2022",
+    title: "init (high school)",
+    detail: "St. Augustine's College, Cape Coast.",
+    status: "done",
+  },
+];
+
+// plain-text commit entry
+function CommitEntry({ c, align }: { c: Commit; align: "left" | "right" }) {
+  return (
+    <div
+      className={`flex flex-col gap-0.5 ${
+        align === "right"
+          ? "sm:items-end sm:text-right"
+          : "items-start text-left"
+      }`}
+    >
+      <div className="flex flex-wrap items-baseline gap-2 font-display text-xs text-fg-dim/70">
+        <span>{c.hash}</span>
+        {c.ref && (
+          <span
+            className={
+              c.status === "active" || c.status === "done"
+                ? "text-terminal-green"
+                : "text-amber"
+            }
+          >
+            {c.ref}
+          </span>
+        )}
+      </div>
+      <div className="flex items-center gap-2 font-display text-xs text-fg-dim">
+        <span>{c.date}</span>
+        {c.status === "active" && (
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-terminal-green opacity-75" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-terminal-green" />
+          </span>
+        )}
+      </div>
+      <h3 className="font-display text-lg font-bold text-fg">{c.title}</h3>
+      <p className="max-w-sm font-display text-sm leading-snug text-fg-dim">
+        {c.detail}
+      </p>
+    </div>
+  );
+}
+
 export default function About() {
   const [bootIndex, setBootIndex] = useState(0);
   const elapsed = useElapsed(PIVOT_DATE);
@@ -120,16 +226,17 @@ export default function About() {
           </div>
           <div className="font-display text-fg-dim leading-relaxed space-y-2 pb-1">
             <p>
-              before: spreadsheets, ledgers, a degree that taught me how a
-              business decides, but never how to build the tool it decides with.
+              <span className="font-bold">before:</span> spreadsheets, ledgers,
+              a degree that taught me how a business decides, but never how to
+              build the tool it decides with.
             </p>
             <p>
-              after: 2024. hacking together a static YouTube clone with raw HTML
-              and CSS from a crash course tutorial by "SuperSimpleDev". a fellow
-              developer saw it and thought he was looking at the actual live
-              site, [haha] until i told him it's just a static clone. that was
-              my <span className="font-semibold">"yeah, this is it"</span>{" "}
-              moment.
+              <span className="font-bold">after:</span> 2024. hacking together a
+              static YouTube clone with raw HTML and CSS from a crash course
+              tutorial by "SuperSimpleDev". a fellow developer saw it and
+              thought he was looking at the actual live site, [haha] until i
+              told him it's just a static clone. that was my{" "}
+              <span className="font-bold">"yeah, this is it"</span> moment.
             </p>
           </div>
 
@@ -181,7 +288,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div className="group flex flex-col border-2 border-fg bg-panel shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none cursor-default">
-              <div className="flex items-center justify-between border-b-2 border-fg bg-line/20 px-3 py-1.5 font-display text-[11px] tracking-wider text-fg-dim">
+              <div className="flex items-center justify-between border-b-2 border-fg bg-line/20 px-3 py-1.5 font-display text-[11.5px] tracking-wider text-fg-dim">
                 <span>sys.frontend</span>
                 <span className="flex items-center gap-1.5">
                   <span className="h-1.5 w-1.5 rounded-full bg-terminal-green group-hover:animate-pulse" />
@@ -195,7 +302,7 @@ export default function About() {
             </div>
 
             <div className="group flex flex-col border-2 border-fg bg-panel shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none cursor-default">
-              <div className="flex items-center justify-between border-b-2 border-fg bg-line/20 px-3 py-1.5 font-display text-[11px] tracking-wider text-fg-dim">
+              <div className="flex items-center justify-between border-b-2 border-fg bg-line/20 px-3 py-1.5 font-display text-[11.5px] tracking-wider text-fg-dim">
                 <span>sys.backend</span>
                 <span>142kb</span>
               </div>
@@ -205,7 +312,7 @@ export default function About() {
             </div>
 
             <div className="group flex flex-col border-2 border-fg bg-panel shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none cursor-default">
-              <div className="flex items-center justify-between border-b-2 border-fg bg-line/20 px-3 py-1.5 font-display text-[11px] tracking-wider text-fg-dim">
+              <div className="flex items-center justify-between border-b-2 border-fg bg-line/20 px-3 py-1.5 font-display text-[11.5px] tracking-wider text-fg-dim">
                 <span>sys.infra</span>
                 <span>node_modules</span>
               </div>
@@ -215,7 +322,7 @@ export default function About() {
             </div>
 
             <div className="group flex flex-col border-2 border-fg bg-panel shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none cursor-default">
-              <div className="flex items-center justify-between border-b-2 border-fg bg-line/20 px-3 py-1.5 font-display text-[11px] tracking-wider text-fg-dim">
+              <div className="flex items-center justify-between border-b-2 border-fg bg-line/20 px-3 py-1.5 font-display text-[11.5px] tracking-wider text-fg-dim">
                 <span>sys.logic</span>
                 <span className="text-amber">protected</span>
               </div>
@@ -226,109 +333,72 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* 5. TIMELINE — milestones + folded-in awards */}
+        {/* 5. TIMELINE — milestones + system nodes */}
         <motion.div
           variants={item}
-          className="relative flex flex-col gap-4 mr-[6.5px] sm:mx-0 font-display"
+          className="flex flex-col gap-6 font-display mr-[6.5px] sm:mx-0"
         >
           <div className="text-sm text-amber tracking-wide">
-            git log --oneline
+            {"> git log --oneline --graph"}
           </div>
 
-          <div className="relative border-l-2 border-fg ml-3 flex flex-col gap-8 py-2">
-            <div className="group relative pl-6 cursor-default">
-              <div className="absolute -left-1.75 top-1.5 h-3 w-3 bg-panel border-2 border-fg transition-all duration-200 group-hover:shadow-[0_0_8px_var(--color-terminal-green)] group-hover:bg-terminal-green" />
-              <div className="font-display text-xs text-amber mb-1 transition-colors duration-200 group-hover:text-terminal-green">
-                [expected Sep 2026]{" "}
-                <span className="text-fg-dim opacity-50 ml-2">a1b2c3d</span>
-              </div>
-              <h3 className="font-display text-lg font-bold">
-                sys_build_complete
-              </h3>
-              <p className="text-fg-dim text-sm mt-1">
-                BSc. Business Administration (Management) — KNUST. Expected
-                First Class Honours.
-              </p>
-            </div>
-
-            <div className="group relative pl-6 cursor-default">
-              <div className="absolute -left-1.75 top-1.5 h-3 w-3 bg-terminal-green border-2 border-fg shadow-[0_0_6px_var(--color-terminal-green)]" />
-              <div className="font-display text-xs text-terminal-green mb-1">
-                [Jan 2025 - Present]{" "}
-                <span className="text-fg-dim opacity-50 ml-2">
-                  head -{">"} main
+          {/* MOBILE TIMELINE (Single Rail) */}
+          <div className="relative flex flex-col gap-8 py-4 pl-12 sm:hidden">
+            {/* Thickened Trunk */}
+            <div
+              className="absolute left-4 top-4 bottom-4 w-0.5 bg-fg"
+              aria-hidden
+            />
+            {COMMITS.map((c) => (
+              <div key={c.hash} className="relative w-full">
+                {/* System Node */}
+                <span className="absolute -left-9.25 top-1.5 flex h-3 w-3 -translate-x-1px items-center justify-center bg-bg border-2 border-fg">
+                  {c.status === "active" && (
+                    <span className="h-1.25 w-1.25 bg-terminal-green animate-pulse" />
+                  )}
                 </span>
+                <CommitEntry c={c} align="left" />
               </div>
-              <h3 className="font-display text-lg font-bold">dev_runtime</h3>
-              <p className="text-fg-dim text-sm mt-1">
-                Frontend Developer Intern (remote) at Nixzoe Inc, Canada.
-                Shipping production-grade React/Next.js applications,
-                integrating third-party REST APIs, and debugging UI across
-                deployment workflows.
-              </p>
-            </div>
+            ))}
+          </div>
 
-            {/* Award folded into timeline */}
-            <div className="group relative pl-6 cursor-default">
-              <div className="absolute -left-1.75 top-1.5 h-3 w-3 bg-panel border-2 border-fg group-hover:bg-amber transition-all duration-200" />
-              <div className="font-display text-xs text-amber mb-1">
-                [2024 - 2026]{" "}
-                <span className="text-fg-dim opacity-50 ml-2">
-                  tag: v1.0-scholar
-                </span>
-              </div>
-              <h3 className="font-display text-lg font-bold">
-                scholarship_granted
-              </h3>
-              <p className="text-fg-dim text-sm mt-1">
-                Ghana National Petroleum Corporation Scholarship, KNUST.
-              </p>
-            </div>
+          {/* DESKTOP TIMELINE (The Ladder) */}
+          <div className="relative hidden sm:block py-4">
+            {/* Thickened Trunk */}
+            <div
+              className="absolute left-1/2 top-4 bottom-4 w-0.5 -translate-x-1/2 bg-fg"
+              style={{
+                maskImage:
+                  "linear-gradient(to bottom, transparent, black 16px, black calc(100% - 16px), transparent)",
+              }}
+              aria-hidden
+            />
 
-            <div className="group relative pl-6 cursor-default">
-              <div className="absolute -left-1.75 top-1.5 h-3 w-3 bg-panel border-2 border-fg transition-all duration-200 group-hover:shadow-[0_0_8px_var(--color-terminal-green)] group-hover:bg-terminal-green" />
-              <div className="font-display text-xs text-amber mb-1 transition-colors duration-200 group-hover:text-terminal-green">
-                [Sep 2023 - Nov 2023]{" "}
-                <span className="text-fg-dim opacity-50 ml-2">f8e7d6c</span>
-              </div>
-              <h3 className="font-display text-lg font-bold">
-                finance_runtime
-              </h3>
-              <p className="text-fg-dim text-sm mt-1">
-                Intern at SMEC (Accra). Managed financial records, tax
-                clearances, reconciled receipts, and ensured audit readiness.
-              </p>
-            </div>
+            <div className="flex flex-col gap-12">
+              {COMMITS.map((c, i) => {
+                const side = i % 2 === 0 ? "left" : "right";
 
-            {/* Award folded into timeline */}
-            <div className="group relative pl-6 cursor-default">
-              <div className="absolute -left-1.75 top-1.5 h-3 w-3 bg-panel border-2 border-fg group-hover:bg-amber transition-all duration-200" />
-              <div className="font-display text-xs text-amber mb-1">
-                [2022]{" "}
-                <span className="text-fg-dim opacity-50 ml-2">
-                  tag: v0.1-topgrad
-                </span>
-              </div>
-              <h3 className="font-display text-lg font-bold">
-                overall_best_student
-              </h3>
-              <p className="text-fg-dim text-sm mt-1">
-                Best General Arts Student, St. Augustine's College, Cape Coast.
-              </p>
-            </div>
+                return (
+                  <div key={c.hash} className="relative flex w-full">
+                    {/* System Node (Locked to absolute center) */}
+                    <div className="absolute left-1/2 top-1.5 flex h-3 w-3 -translate-x-1/2 items-center justify-center bg-bg border-2 border-fg z-10">
+                      {c.status === "active" && (
+                        <span className="h-1.25 w-1.25 bg-terminal-green animate-pulse" />
+                      )}
+                    </div>
 
-            <div className="group relative pl-6 cursor-default">
-              <div className="absolute -left-1.75 top-1.5 h-3 w-3 bg-panel border-2 border-fg transition-all duration-200 group-hover:shadow-[0_0_8px_var(--color-terminal-green)] group-hover:bg-terminal-green" />
-              <div className="font-display text-xs text-amber mb-1 transition-colors duration-200 group-hover:text-terminal-green">
-                [2019 - 2022]{" "}
-                <span className="text-fg-dim opacity-50 ml-2">init_commit</span>
-              </div>
-              <h3 className="font-display text-lg font-bold">
-                init (high school)
-              </h3>
-              <p className="text-fg-dim text-sm mt-1">
-                St. Augustine's College, Cape Coast.
-              </p>
+                    {/* Left Commits */}
+                    <div className="w-1/2 flex justify-end pr-12">
+                      {side === "left" && <CommitEntry c={c} align="right" />}
+                    </div>
+
+                    {/* Right Commits */}
+                    <div className="w-1/2 flex justify-start pl-12">
+                      {side === "right" && <CommitEntry c={c} align="left" />}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </motion.div>
@@ -383,7 +453,7 @@ export default function About() {
               it introduces, i make it explain until i own it. every such output
               i ship, i review and refine to match my own standard. i think
               that's the honest way to grow.
-              <span className="ml-1 inline-block h-3.5 w-2 bg-fg align-middle animate-pulse" />
+              <span className="ml-1 inline-block h-3.5 w-1.5 bg-fg align-middle animate-pulse" />
             </span>
           </div>
         </motion.div>
@@ -391,7 +461,7 @@ export default function About() {
         {/* 8. CLOSING / CTA */}
         <motion.div variants={item} className="flex flex-col gap-4 items-start">
           <div className="text-sm text-amber tracking-wide">
-            ~/projects/portfolio (master)
+            ~/projects/portfolio (main)
           </div>
           <p className="font-display text-fg-dim leading-relaxed max-w-lg">
             that's most of it. if any of this sounds like your kind of problem,

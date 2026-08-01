@@ -207,7 +207,7 @@ const FILE_COUNT = ROWS.length - DIR_COUNT;
 
 function Prefix({ cells, connector }: { cells: string[]; connector: string }) {
   return (
-    <span className="inline-flex shrink-0 select-none font-display text-[13px] text-fg-dim/35 sm:text-sm">
+    <span className="inline-flex shrink-0 select-none font-display text-[13px] text-fg-dim/60 sm:text-sm">
       {cells.map((cell, i) => (
         <span key={i} className="inline-block w-[1.6ch] text-center">
           {cell[0]}
@@ -229,7 +229,7 @@ export default function Pipeline() {
       >
         <motion.div variants={item} className="flex flex-col gap-5">
           <div className="font-display text-sm text-amber tracking-wide">
-            $ cat /sys/pipeline.md{" "}
+            $ cat /sys/pipeline.md
           </div>
           <h1 className="font-display text-[30px] font-bold leading-[1.1] text-fg">
             what i'm working on <br />
@@ -333,8 +333,8 @@ export default function Pipeline() {
                 initialize handshake
               </div>
               <div className="text-sm text-fg-dim">
-                my inbox is open for engineering roles, freelance builds, or
-                just talking tech.
+                my inbox is open for engineering roles, freelance builds or just
+                talking tech.
               </div>
             </div>
 

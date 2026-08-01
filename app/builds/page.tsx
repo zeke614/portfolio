@@ -7,6 +7,7 @@ import assayPreview from "@/app/imgs/assay.webp";
 
 import { LuArrowUpRight } from "react-icons/lu";
 import { PiEyesFill } from "react-icons/pi";
+import UpNext from "../components/upnext";
 
 const container: Variants = {
   hidden: {},
@@ -193,7 +194,7 @@ export default function Builds() {
                   Profitability Index
                 </h3>
                 <p className="text-sm leading-relaxed text-fg-dim">
-                  For every ¥1.00 invested, this project returns approximately
+                  for every ¥1.00 invested, this project returns approximately
                   ¥1.15 in present value.
                 </p>
               </div>
@@ -349,7 +350,7 @@ export default function Builds() {
                   Data Visualization
                 </h3>
                 <p className="text-sm leading-relaxed text-fg-dim">
-                  Interactive historical rate mapping built with Recharts,
+                  interactive historical rate mapping built with Recharts,
                   optimized for responsive cross-device viewing.
                 </p>
               </div>
@@ -376,6 +377,25 @@ export default function Builds() {
             </div>
           </div>
         </motion.div>
+
+        {/* THE BASH EXIT LOG */}
+        {/* <motion.div variants={item} className="mt-16 mb-4 flex justify-center">
+          <div className="flex flex-col gap-1.5 border-l-2 border-terminal-green pl-4 text-[12px] sm:text-[13px] text-fg-dim w-full max-w-sm cursor-default">
+            <div className="flex items-center gap-2">
+              <span className="text-terminal-green font-bold">zeke@system</span>
+              <span>~/deployments (master)</span>
+            </div>
+            <div className="text-fg-dim/60">
+              $ process completed (exit code 0)
+            </div>
+            <div className="flex items-center gap-2 mt-3 text-amber">
+              <span>{"// backlog full. compiling next module..."}</span>
+              <span className="h-3.5 w-2 bg-fg animate-pulse inline-block" />
+            </div>
+          </div>
+        </motion.div> */}
+
+        <UpNext />
       </motion.div>
     </section>
   );
