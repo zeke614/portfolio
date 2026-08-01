@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://ezekielarkohamissah.vercel.app/sitemap.xml",
+    sitemap: "https://eaamissah.vercel.app/sitemap.xml",
   };
 }
