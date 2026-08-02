@@ -23,9 +23,10 @@ export default async function Icon() {
       <span
         style={{
           color: "#121517",
-          fontSize: 20,
+          fontSize: 21,
           fontWeight: 900,
           fontFamily: "`Satoshi`",
+          paddingTop: "3px",
         }}
       >
         Z

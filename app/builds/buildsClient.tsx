@@ -27,7 +27,7 @@ const item: Variants = {
 
 export default function BuildsClient() {
   return (
-    <section className="relative w-full bg-bg text-fg min-h-screen pb-22 pt-18 md:py-30">
+    <section className="relative w-full bg-bg text-fg min-h-screen pb-22 pt-18 md:pb-26 md:pt-22">
       <motion.div
         variants={container}
         initial="hidden"
@@ -206,7 +206,7 @@ export default function BuildsClient() {
                   rel="noopener noreferrer"
                   className="flex-1 text-center border-2 border-fg bg-terminal-green px-5 py-3 font-display text-sm font-bold text-bg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg active:translate-x-0 active:translate-y-0 active:shadow-none"
                 >
-                  experience{" "}
+                  live.url
                   <LuArrowUpRight className="inline-block ml-1 size-4.5" />
                 </a>
                 <a
@@ -215,7 +215,8 @@ export default function BuildsClient() {
                   rel="noopener noreferrer"
                   className="flex-1 text-center border-2 border-fg bg-panel px-5 py-3 font-display text-sm font-bold text-fg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none"
                 >
-                  source <PiEyesFill className="inline-block ml-1 size-4.5" />
+                  source.git{" "}
+                  <PiEyesFill className="inline-block ml-1 size-4.5" />
                 </a>
               </div>
             </div>
@@ -362,7 +363,7 @@ export default function BuildsClient() {
                   rel="noopener noreferrer"
                   className="flex-1 text-center border-2 border-fg bg-terminal-green px-5 py-3 font-display text-sm font-bold text-bg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg active:translate-x-0 active:translate-y-0 active:shadow-none"
                 >
-                  experience
+                  live.url
                   <LuArrowUpRight className="inline-block ml-1 size-4.5" />
                 </a>
                 <a
@@ -371,7 +372,8 @@ export default function BuildsClient() {
                   rel="noopener noreferrer"
                   className="flex-1 text-center border-2 border-fg bg-panel px-5 py-3 font-display text-sm font-bold text-fg shadow-hard transition-all duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 hover:shadow-hard-lg hover:bg-line/10 active:translate-x-0 active:translate-y-0 active:shadow-none"
                 >
-                  source <PiEyesFill className="inline-block ml-1 size-4.5" />
+                  source.git{" "}
+                  <PiEyesFill className="inline-block ml-1 size-4.5" />
                 </a>
               </div>
             </div>

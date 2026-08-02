@@ -2,9 +2,9 @@ import Hero from "@/app/components/hero";
 
 export default function Page() {
   return (
-    <main>
+    <>
+      {" "}
       <Hero />
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -20,6 +20,6 @@ export default function Page() {
           }),
         }}
       />
-    </main>
+    </>
   );
 }

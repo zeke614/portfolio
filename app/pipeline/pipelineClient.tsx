@@ -220,7 +220,7 @@ function Prefix({ cells, connector }: { cells: string[]; connector: string }) {
 
 export default function PipelineClient() {
   return (
-    <section className="relative w-full overflow-x-hidden bg-bg text-fg min-h-screen pb-22 pt-18 md:py-30">
+    <section className="relative w-full overflow-x-hidden bg-bg text-fg min-h-screen pb-22 pt-18 md:pb-26 md:pt-22">
       <motion.div
         variants={container}
         initial="hidden"
@@ -348,7 +348,7 @@ export default function PipelineClient() {
               "
             >
               <LuMail size={16} />
-              transmit_signal
+              send_signal
               <LuArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"

@@ -24,11 +24,11 @@ const item: Variants = {
 
 export default function Hero() {
   return (
-    <section className="relative w-full bg-bg text-fg">
+    <section className="relative w-full bg-bg text-fg flex flex-col justify-center min-h-[calc(100vh-200px)] pb-22 pt-18 md:py-12 lg:py-24">
       <div
         className="
           mx-auto grid w-full max-w-4xl grid-cols-1 items-center gap-16 sm:gap-20
-          px-4 sm:px-8 xl:px-0 pb-22 pt-18 md:grid-cols-[1.3fr_1fr] md:gap-10 sm:py-24
+          px-4 sm:px-8 xl:px-0 md:grid-cols-[1.2fr_1fr] md:gap-5
         "
       >
         {/* left column */}
@@ -62,11 +62,11 @@ export default function Hero() {
             variants={item}
             className="max-w-md font-display leading-normal text-fg-dim"
           >
-            software developer with a finance and{" "}
-            <br className="sm:hidden block" /> business background. i don't just
-            write code. <br className="sm:hidden block" /> i understand the
-            math, risk, and logic <br className="sm:hidden block" /> behind what
-            it's actually built to do.
+            software developer with a business and{" "}
+            <br className="sm:hidden block" /> finance background. i don't just
+            build user experiences. i understand the logic, risk and numbers
+            behind <br className="sm:block hidden" /> what it's actually built
+            to do.
           </motion.p>
 
           <motion.div
@@ -83,7 +83,7 @@ export default function Hero() {
                 active:translate-x-0 active:translate-y-0 active:shadow-none
               "
             >
-              my builds <LuArrowRight className="inline-block ml-1 size-4.5" />
+              builds.log <LuArrowRight className="inline-block ml-1 size-4.5" />
             </Link>
             <a
               href="/ezekiel_a_amissah_resume.pdf"

@@ -61,7 +61,7 @@ export default function Header() {
               aria-label="Toggle menu"
               aria-expanded={menuOpen}
               onClick={() => setMenuOpen(!menuOpen)}
-              className="relative z-10 ml-2.25 flex h-9 w-8 items-center justify-center transition-all sm:hidden"
+              className="relative z-10 ml-2.25 flex h-9 w-5 items-center justify-center transition-all sm:hidden"
             >
               <AnimatedMenuIcon menuOpen={menuOpen} />
             </button>
@@ -112,7 +112,7 @@ function AnimatedMenuIcon({ menuOpen }: { menuOpen: boolean }) {
           open: { rotate: 45, y: 0 },
         }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
-        className="absolute left-0 top-1/2 h-0.5 w-6 -translate-y-1/2 rounded-full bg-current"
+        className="absolute left-0 top-1/2 h-[1.75px] w-5 -translate-y-1/2 bg-fg"
       />
 
       <motion.span
@@ -121,7 +121,7 @@ function AnimatedMenuIcon({ menuOpen }: { menuOpen: boolean }) {
           open: { opacity: 0, scaleX: 0 },
         }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
-        className="absolute left-0 top-1/2 h-0.5 w-6 origin-left -translate-y-1/2 rounded-full bg-current"
+        className="absolute left-0 top-1/2 h-[1.75px] w-5 origin-left -translate-y-1/2 bg-fg"
       />
 
       <motion.span
@@ -130,7 +130,7 @@ function AnimatedMenuIcon({ menuOpen }: { menuOpen: boolean }) {
           open: { rotate: -45, y: 0 },
         }}
         transition={{ duration: 0.25, ease: "easeInOut" }}
-        className="absolute left-0 top-1/2 h-0.5 w-6 -translate-y-1/2 rounded-full bg-current"
+        className="absolute left-0 top-1/2 h-[1.75px] w-5 -translate-y-1/2 bg-fg"
       />
     </motion.span>
   );

@@ -165,7 +165,7 @@ export default function AboutClient() {
   }, [bootIndex]);
 
   return (
-    <section className="relative w-full overflow-x-hidden bg-bg text-fg min-h-screen pb-22 pt-18 md:py-30">
+    <section className="relative w-full overflow-x-hidden bg-bg text-fg min-h-screen pb-22 pt-18 md:pb-26 md:pt-22">
       {" "}
       <motion.div
         variants={container}
@@ -231,10 +231,10 @@ export default function AboutClient() {
               build the tool it decides with.
             </p>
             <p>
-              <span className="font-bold">after:</span> 2024. hacking together a
-              static YouTube clone with raw HTML and CSS from a crash course
-              tutorial by "SuperSimpleDev". a fellow developer saw it and
-              thought he was looking at the actual live site, [haha] until i
+              <span className="font-bold">after:</span> in 2024 i hacked
+              together a static YouTube clone with raw HTML and CSS from a crash
+              course tutorial by "SuperSimpleDev". a developer saw it and
+              thought he was looking at the actual live site [haha], until i
               told him it's just a static clone. that was my{" "}
               <span className="font-bold">"yeah, this is it"</span> moment.
             </p>
@@ -476,7 +476,7 @@ export default function AboutClient() {
               active:translate-x-0 active:translate-y-0 active:shadow-none
             "
           >
-            see the builds
+            builds.log
             <span className="transition-transform group-hover:translate-x-1">
               <LuArrowRight size={15} />
             </span>
