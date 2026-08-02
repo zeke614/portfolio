@@ -92,7 +92,7 @@ export default function Footer() {
               {/* Hover State */}
               <span className="hidden group-hover:block text-terminal-green">
                 <span className="hidden sm:inline">
-                  zeke · frontend dev · node_accra
+                  zeke · frontend dev · node_ghana
                 </span>
                 <span className="sm:hidden inline-block leading-tight">
                   zeke <br /> frontend dev

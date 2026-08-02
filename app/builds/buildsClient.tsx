@@ -42,7 +42,7 @@ export default function BuildsClient() {
             sys.deployments
           </h1>
           <p className="text-fg-dim font-display text-sm">
-            // executed logic and active environments.
+            // live projects and the systems behind them
           </p>
         </motion.div>
 

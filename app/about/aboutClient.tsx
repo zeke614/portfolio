@@ -425,8 +425,10 @@ export default function AboutClient() {
             in a single click, and actually tells you what the numbers mean.
             <br />
             <br />
-            i'm not interested in being a generalist full-stack dev necessarily.
-            i'm interested in the tools that sit between a decision and its
+            i've worked across the full stack and can handle the backend when a
+            project calls for it but my sharpest work is on the frontend i'm not
+            interested in being a generalist full-stack dev necessarily. i'm
+            interested in the tools that sit between a decision and its
             consequences, and making those tools honest.
           </p>
         </motion.div>

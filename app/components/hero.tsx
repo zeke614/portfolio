@@ -28,7 +28,7 @@ export default function Hero() {
       <div
         className="
           mx-auto grid w-full max-w-4xl grid-cols-1 items-center gap-16 sm:gap-20
-          px-4 sm:px-8 xl:px-0 md:grid-cols-[1.2fr_1fr] md:gap-5
+          px-4 sm:px-8 xl:px-0 md:grid-cols-[1.2fr_1fr] md:gap-12
         "
       >
         {/* left column */}
