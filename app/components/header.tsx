@@ -34,11 +34,8 @@ export default function Header() {
     <header className="w-full bg-bg text-fg">
       <div className="mx-auto max-w-225 px-4 sm:px-8 xl:px-0">
         <div className="flex items-center justify-between py-5">
-          <Link
-            href="/"
-            className="font-display text-xl font-semibold tracking-tighter text-fg"
-          >
-            <span className="text-terminal-green">{`zeke `}</span>
+          <Link href="/" className="font-display text-xl font-semibold text-fg">
+            <span className="text-terminal-green">{`zeke`}</span>
           </Link>
 
           <nav className="hidden items-center gap-6 font-display tracking-wider text-fg-dim md:flex">

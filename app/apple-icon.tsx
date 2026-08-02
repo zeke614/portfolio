@@ -17,18 +17,17 @@ export default async function Icon() {
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "white",
-        paddingBottom: "5px",
       }}
     >
       <span
         style={{
           color: "#121517",
-          fontSize: 25,
+          fontSize: 20,
           fontWeight: 900,
           fontFamily: "`Satoshi`",
         }}
       >
-        z
+        Z
       </span>
     </div>,
     {

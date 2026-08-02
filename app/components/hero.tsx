@@ -86,7 +86,9 @@ export default function Hero() {
               my builds <LuArrowRight className="inline-block ml-1 size-4.5" />
             </Link>
             <a
-              href="/resume.pdf"
+              href="/ezekiel_a_amissah_resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="
                 border-2 border-fg px-6 py-3
                 font-display text-sm font-medium text-fg
