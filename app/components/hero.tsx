@@ -63,10 +63,11 @@ export default function Hero() {
             className="max-w-md font-display leading-normal text-fg-dim"
           >
             software developer with a business and{" "}
-            <br className="sm:hidden block" /> finance background. i don't just
-            build user experiences. i understand the logic, risk and numbers
+            <br className="sm:hidden block" /> finance background. beyond just
+            building user experiences, i understand the logic, risk and numbers
             behind <br className="sm:block hidden" /> what it's actually built
-            to do.
+            to do. i think about why the product exists and who it serves, not
+            just how it looks and works.
           </motion.p>
 
           <motion.div

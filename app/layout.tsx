@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
+import { Analytics } from "@vercel/analytics/next";
 
 import {
   Bricolage_Grotesque,
@@ -69,6 +70,9 @@ export const metadata: Metadata = {
     description:
       "Frontend developer with a business background, building fintech tools like Assay and Exchango.",
   },
+  verification: {
+    google: "T6EdMufxFF69EDDXSRDQ1PLZK33j2BKCRarWzzWCza0",
+  },
   robots: {
     index: true,
     follow: true,
@@ -103,6 +107,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
